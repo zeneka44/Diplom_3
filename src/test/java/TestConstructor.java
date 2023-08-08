@@ -22,20 +22,25 @@ public class TestConstructor extends TestBase {
     }
 
     @Test
-    public void bunsOpen() {
-        new MainPage(driver).clickOnSaucesButton();
-        new MainPage(driver).clickOnBunsButton();
-        assertTrue(new MainPage(driver).bunsHeaderIsDisplayed());
-    }
-    @Test
     public void saucesOpen() {
-        new MainPage(driver).clickOnSaucesButton();
-        assertTrue(new MainPage(driver).saucesHeaderIsDisplayed());
+        MainPage page = new MainPage(driver);
+        page.clickOnSaucesButton();
+        assertTrue(page.isCategorySelected("Соусы"));
     }
+
+    @Test
+    public void bunsOpen() {
+        MainPage page = new MainPage(driver);
+        page.clickOnSaucesButton();
+        page.clickOnBunsButton();
+        assertTrue(page.isCategorySelected("Булки"));
+    }
+
     @Test
     public void fillingsOpen() {
-        new MainPage(driver).clickOnFillingsButton();
-        assertTrue(new MainPage(driver).fillingsHeaderIsDisplayed());
+        MainPage page = new MainPage(driver);
+        page.clickOnFillingsButton();
+        assertTrue(page.isCategorySelected("Начинки"));
     }
 
     @After
